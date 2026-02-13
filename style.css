@@ -1,15 +1,21 @@
 /* Reset & Base Styles */
 :root {
     --color-bg-start: #E0F7FA;
-    --color-bg-mid: #E1BEE7;
-    --color-bg-end: #F3E5F5;
-    --color-text-primary: #263238;
-    --color-text-secondary: #546E7A;
-    --color-accent: #29B6F6;
-    --color-accent-hover: #039BE5;
-    --glass-bg: rgba(255, 255, 255, 0.65);
-    --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --color-bg-mid: #DCEDC8;
+    /* Pale Green */
+    --color-bg-end: #F1F8E9;
+    /* Very Pale Green */
+    --color-text-primary: #33691E;
+    /* Dark Olive */
+    --color-text-secondary: #558B2F;
+    /* Medium Olive */
+    --color-accent: #689F38;
+    /* Olive Green */
+    --color-accent-hover: #558B2F;
+    /* Darker Olive */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.85);
+    --glass-shadow: 0 8px 32px 0 rgba(85, 139, 47, 0.1);
     --font-main: 'Inter', sans-serif;
     --transition-speed: 0.5s;
 }
@@ -36,16 +42,16 @@
 
 body {
     font-family: var(--font-main);
-    background: linear-gradient(-45deg, #5b2c83, #7e3bbd, #9b59b6, #6c3483);
+    /* Olive Green Gradient */
+    background: linear-gradient(-45deg, #556B2F, #6B8E23, #8FBC8F, #A2D9CE);
     background-size: 400% 400%;
-    animation: gradientMove 12s ease infinite;
+    animation: gradientMove 15s ease infinite;
     color: var(--color-text-primary);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
-    /* Allow vertical scrolling */
     overflow-x: hidden;
 }
 
@@ -57,11 +63,11 @@ body::before {
     left: -100px;
     width: 400px;
     height: 400px;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.3);
     filter: blur(150px);
     border-radius: 50%;
     z-index: -1;
-    opacity: 0.15;
+    opacity: 0.2;
     pointer-events: none;
 }
 
@@ -70,7 +76,6 @@ body::before {
     width: 100%;
     max-width: 480px;
     min-height: 100vh;
-    /* Ensure full height for scrolling */
     position: relative;
     padding: 20px;
     display: flex;
@@ -150,8 +155,8 @@ body::before {
     text-align: center;
     width: 100%;
     box-shadow:
-        0 8px 32px 0 rgba(31, 38, 135, 0.05),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+        0 8px 32px 0 rgba(85, 139, 47, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.4);
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -167,26 +172,29 @@ h1 {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, #FFD180, #FFF59D, #FFFFFF);
+    /* Sage/Gold Gradient Text - Darkened */
+    background: linear-gradient(135deg, #33691E, #558B2F, #7CB342);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.03em;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.3));
 }
 
 h2 {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 16px;
     color: var(--color-text-primary);
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text-primary);
+    /* Darker text */
     letter-spacing: 0.05em;
-    font-weight: 300;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .pulsate {
@@ -211,10 +219,11 @@ h2 {
 .glow-orb {
     width: 80px;
     height: 80px;
-    background: radial-gradient(circle, rgba(255, 245, 157, 0.8), rgba(255, 209, 128, 0.4), transparent);
+    /* Soft Yellow/Green Glow */
+    background: radial-gradient(circle, rgba(220, 237, 200, 0.9), rgba(174, 213, 129, 0.5), transparent);
     border-radius: 50%;
     margin-bottom: 24px;
-    box-shadow: 0 0 60px rgba(255, 213, 79, 0.4);
+    box-shadow: 0 0 60px rgba(139, 195, 74, 0.5);
     animation: floatOrb 6s ease-in-out infinite;
 }
 
@@ -246,7 +255,9 @@ button {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #29B6F6, #0288D1);
+    /* Olive/Green Gradient */
+    background: linear-gradient(135deg, #AED581, #7CB342);
+    /* Light Green to Medium */
     color: #fff;
     padding: 16px 36px;
     border-radius: 50px;
@@ -255,7 +266,7 @@ button {
     width: 100%;
     max-width: 220px;
     box-shadow:
-        0 4px 14px rgba(41, 182, 246, 0.4),
+        0 4px 14px rgba(104, 159, 56, 0.4),
         0 1px 3px rgba(0, 0, 0, 0.1);
     letter-spacing: 0.02em;
     position: relative;
@@ -264,8 +275,8 @@ button {
 
 .btn-primary:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(41, 182, 246, 0.5);
-    background: linear-gradient(135deg, #4FC3F7, #039BE5);
+    box-shadow: 0 6px 20px rgba(104, 159, 56, 0.5);
+    background: linear-gradient(135deg, #C5E1A5, #8BC34A);
 }
 
 .btn-primary:active {
@@ -394,10 +405,11 @@ textarea:focus {
     position: absolute;
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, #42A5F5, #1565C0);
+    background: radial-gradient(circle, #AED581, #558B2F);
+    /* Light Lime to Dark Olive */
     border-radius: 50%;
     z-index: 1;
-    box-shadow: 0 0 0 0 rgba(74, 111, 165, 0.4);
+    box-shadow: 0 0 0 0 rgba(104, 159, 56, 0.4);
     transform: scale(1);
 }
 
@@ -448,7 +460,8 @@ textarea:focus {
 }
 
 .chat-history::-webkit-scrollbar-thumb {
-    background: rgba(41, 182, 246, 0.3);
+    background: rgba(104, 159, 56, 0.4);
+    /* Olive */
     border-radius: 10px;
 }
 
@@ -514,14 +527,15 @@ textarea:focus {
     padding: 0 20px;
 }
 
-/* Support Modal */
+/* Support Modal & Landscape Layout */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -541,20 +555,131 @@ textarea:focus {
     padding: 32px;
     width: 90%;
     max-width: 400px;
-    border-radius: 16px;
+    /* Default narrow alignment */
+    border-radius: 24px;
     text-align: left;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    max-height: 85vh;
+    overflow-y: auto;
+    /* Scroll if needed */
 }
 
-.grounding-tips ul {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    color: var(--color-text-secondary);
+/* Landscape Modifier */
+.modal-content.landscape-modal {
+    max-width: 850px;
+    /* Wider for landscape */
+    width: 95%;
+    display: flex;
+    flex-direction: column;
 }
 
-.helplines p {
-    margin-bottom: 8px;
+.support-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 16px;
 }
 
+/* Grounding Section */
+.grounding-card {
+    background: #DCEDC8;
+    /* Pale Green */
+    padding: 24px;
+    border-radius: 16px;
+    height: 100%;
+}
+
+.grounding-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.grounding-card ul li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+}
+
+/* Helplines Section */
+.helpline-card {
+    background: #F1F8E9;
+    /* Very Pale Green */
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    /* Changed to column for better fitting */
+    gap: 8px;
+    transition: transform 0.2s;
+}
+
+.helpline-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.helpline-details p {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+}
+
+.helpline-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.action-btn.call {
+    color: var(--color-accent);
+}
+
+.action-btn.web {
+    color: #558B2F;
+    /* Olive for web */
+}
+
+.action-btn:hover {
+    background: #f0f0f0;
+}
+
+
+
+/* Responsive Fallback */
+@media (max-width: 700px) {
+    .support-layout {
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
+        gap: 20px;
+    }
+
+    .modal-content.landscape-modal {
+        max-width: 95%;
+    }
+}
+
+.helping-hand-icon {
+    font-size: 1.5rem;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Floating Button */
 .floating-support-btn {
     position: fixed;
     top: 20px;
@@ -565,16 +690,19 @@ textarea:focus {
     padding: 10px 20px;
     border-radius: 25px;
     font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--color-text-primary);
+    font-weight: 600;
+    color: var(--color-accent);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 50;
     transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
 }
 
 .floating-support-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: var(--color-accent);
+    color: white;
 }
 
 /* Game Specific Styles */

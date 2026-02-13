@@ -97,7 +97,7 @@
         <!-- Screen 5: Choice Point -->
         <section id="screen-choice" class="screen hidden">
             <div class="content">
-                <h2>Are you okay now?</h2>
+                <h2>Are you feeling better?</h2>
                 <div class="emoji-container" style="justify-content: center; gap: 20px;">
                     <button id="btn-choice-yes" class="btn-primary" style="background: #66BB6A;">Yes</button>
                     <button id="btn-choice-no" class="btn-primary" style="background: #EF5350;">No</button>
@@ -127,25 +127,65 @@
 
         <!-- Screen 7: Support & Grounding (Modal) -->
         <div id="modal-support" class="modal hidden">
-            <div class="modal-content">
+            <div class="modal-content landscape-modal">
                 <h2>Support & Grounding</h2>
-                <p class="subtitle" style="text-align: left; margin-bottom: 16px;">If things feel heavy, here are some
-                    ways to find your footing.</p>
-                <div class="grounding-tips">
-                    <h3>Grounding Tips</h3>
-                    <ul>
-                        <li>Describe 3 things you see around you.</li>
-                        <li>Feel the weight of your feet on the floor.</li>
-                        <li>Take a sip of cold water.</li>
-                    </ul>
+                <p class="subtitle" style="text-align: left; margin-bottom: 24px;">You are not alone. If things feel
+                    heavy, here are some ways to find your footing.</p>
+
+                <div class="support-layout">
+                    <!-- Column 1: Grounding -->
+                    <div class="support-col">
+                        <h3>Grounding Tips</h3>
+                        <div class="grounding-card">
+                            <ul>
+                                <li>Describe 3 things you see around you.</li>
+                                <li>Feel the weight of your feet on the floor.</li>
+                                <li>Take a sip of cold water.</li>
+                                <li>Name 2 sounds you can hear right now.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Helplines -->
+                    <div class="support-col">
+                        <h3>Helplines (24/7)</h3>
+
+                        <div class="helpline-card">
+                            <div class="helpline-details">
+                                <p><strong>Kerala Government (DISHA)</strong></p>
+                                <div class="helpline-actions">
+                                    <a href="tel:1056" class="action-btn call">📞 1056</a>
+                                    <a href="https://dhs.kerala.gov.in/" target="_blank" class="action-btn web">🌐
+                                        Website</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="helpline-card">
+                            <div class="helpline-details">
+                                <p><strong>India Government (KIRAN)</strong></p>
+                                <div class="helpline-actions">
+                                    <a href="tel:18005990019" class="action-btn call">📞 1800-599-0019</a>
+                                    <a href="http://socialjustice.nic.in/" target="_blank" class="action-btn web">🌐
+                                        Website</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="helpline-card">
+                            <div class="helpline-details">
+                                <p><strong>Tele-MANAS</strong></p>
+                                <div class="helpline-actions">
+                                    <a href="tel:14416" class="action-btn call">📞 14416</a>
+                                    <a href="https://telemanas.mohfw.gov.in/" target="_blank" class="action-btn web">🌐
+                                        Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="helplines">
-                    <h3>Helplines (India)</h3>
-                    <p><strong>Vandrevala Foundation:</strong> 1860 266 2345</p>
-                    <p><strong>iCall:</strong> 91529 87821</p>
-                    <p><strong>Kiran (Govt):</strong> 1800 599 0019</p>
-                </div>
-                <button id="btn-close-support" class="btn-primary">Close</button>
+
+                <button id="btn-close-support" class="btn-primary" style="margin-top: 24px;">Close</button>
             </div>
         </div>
 

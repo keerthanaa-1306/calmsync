@@ -22,33 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalSupport = document.getElementById('modal-support');
 
     // Update Support Modal Content
+    // Content is now static in index.html for better layout control
     const supportContent = modalSupport.querySelector('.modal-content p');
-    if (supportContent) {
-        supportContent.innerHTML = `
-            <strong>You are not alone.</strong><br><br>
-            
-            <div style="text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-                <strong>Kerala Government (DISHA):</strong><br>
-                📞 Call: <a href="tel:1056">1056</a> (Toll-Free, 24/7)<br>
-                🌐 <a href="https://dhs.kerala.gov.in/" target="_blank">Kerala Health Services</a>
-            </div>
+    // kept selector just in case, but removed injection
 
-            <div style="text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-                <strong>India Government (KIRAN):</strong><br>
-                📞 Call: <a href="tel:18005990019">1800-599-0019</a> (Toll-Free, 24/7)<br>
-                🌐 <a href="http://socialjustice.nic.in/" target="_blank">Ministry of Social Justice</a>
-            </div>
-
-            <div style="text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
-                <strong>Tele-MANAS:</strong><br>
-                📞 Call: <a href="tel:14416">14416</a> (24/7)<br>
-                🌐 <a href="https://telemanas.mohfw.gov.in/" target="_blank">Tele-MANAS Portal</a>
-            </div>
-
-            <br>
-            <small>These services are free, confidential, and available 24/7.</small>
-        `;
-    }
     const visualCircle = document.querySelector('.circle-visual');
     const breathInstruction = document.getElementById('breath-instruction');
     const validationMessage = document.getElementById('validation-message');
