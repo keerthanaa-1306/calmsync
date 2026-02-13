@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalmSync</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Screen 1: Welcome -->
+        <section id="screen-welcome" class="screen active">
+            <div class="content">
+                <div class="glow-orb"></div>
+                <h1>CalmSync</h1>
+                <p class="subtitle pulsate">Pause. Sync. Continue.</p>
+            </div>
+        </section>
+
+        <!-- Screen 2: Emotional Check-In -->
+        <section id="screen-checkin" class="screen hidden">
+            <div class="mood-card">
+                <h2>How are you feeling right now?</h2>
+
+                <div class="mood-options">
+                    <div class="mood" data-mood="Angry">
+                        <span>😠</span>
+                        <p>Angry</p>
+                    </div>
+
+                    <div class="mood" data-mood="Frustrated">
+                        <span>😤</span>
+                        <p>Frustrated</p>
+                    </div>
+
+                    <div class="mood" data-mood="Neutral">
+                        <span>😐</span>
+                        <p>Neutral</p>
+                    </div>
+
+                    <div class="mood" data-mood="Sad">
+                        <span>😔</span>
+                        <p>Sad</p>
+                    </div>
+
+                    <div class="mood" data-mood="Anxious">
+                        <span>😰</span>
+                        <p>Anxious</p>
+                    </div>
+
+                    <div class="mood" data-mood="Stressed">
+                        <span>😣</span>
+                        <p>Stressed</p>
+                    </div>
+                </div>
+
+                <textarea id="checkin-note" placeholder="Write if you want — it’s okay to leave it blank."
+                    style="margin-bottom: 20px;"></textarea>
+                <button id="continueBtn" disabled>Continue</button>
+            </div>
+        </section>
+
+        <!-- Screen 3: Validation -->
+        <section id="screen-validation" class="screen hidden">
+            <div class="content">
+                <h2 id="validation-message"></h2>
+                <div class="validation-options"
+                    style="width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+                    <button id="btn-val-breathe" class="btn-large">🌬️ Breathing Exercise</button>
+                    <button id="btn-val-chat" class="btn-large">🤖 Talk to AI</button>
+                    <button id="btn-val-game" class="btn-large">🎮 Calming Game</button>
+                    <button id="btn-val-burn" class="btn-large">🔥 Burn It Away</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 4: Pause & Breathe -->
+        <section id="screen-breathe" class="screen hidden">
+            <div class="content">
+                <h2>Let’s slow down for a moment.</h2>
+                <div class="breathing-circle">
+                    <div class="circle-visual"></div>
+                    <span id="breath-instruction">Inhale</span>
+                    <span id="breath-countdown">4</span>
+                </div>
+                <button id="btn-finish-pause" class="btn-primary type-secondary">Finish Pause</button>
+            </div>
+        </section>
+
+        <!-- Screen 5: Choice Point -->
+        <section id="screen-choice" class="screen hidden">
+            <div class="content">
+                <h2>Are you okay now?</h2>
+                <div class="emoji-container" style="justify-content: center; gap: 20px;">
+                    <button id="btn-choice-yes" class="btn-primary" style="background: #66BB6A;">Yes</button>
+                    <button id="btn-choice-no" class="btn-primary" style="background: #EF5350;">No</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 6: AI Chat (Optional) -->
+        <section id="screen-chat" class="screen hidden">
+            <div class="content full-height">
+                <div class="chat-header">
+                    <p class="disclaimer">This is a supportive AI listener, not a replacement for professional help.</p>
+                </div>
+                <div id="chat-history" class="chat-history">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="Type if you want to share…">
+                    <button id="btn-chat-send">Send</button>
+                </div>
+                <button id="btn-end-chat" class="btn-text">End Chat</button>
+            </div>
+        </section>
+
+
+
+        <!-- Screen 7: Support & Grounding (Modal) -->
+        <div id="modal-support" class="modal hidden">
+            <div class="modal-content">
+                <h2>Support & Grounding</h2>
+                <p class="subtitle" style="text-align: left; margin-bottom: 16px;">If things feel heavy, here are some
+                    ways to find your footing.</p>
+                <div class="grounding-tips">
+                    <h3>Grounding Tips</h3>
+                    <ul>
+                        <li>Describe 3 things you see around you.</li>
+                        <li>Feel the weight of your feet on the floor.</li>
+                        <li>Take a sip of cold water.</li>
+                    </ul>
+                </div>
+                <div class="helplines">
+                    <h3>Helplines (India)</h3>
+                    <p><strong>Vandrevala Foundation:</strong> 1860 266 2345</p>
+                    <p><strong>iCall:</strong> 91529 87821</p>
+                    <p><strong>Kiran (Govt):</strong> 1800 599 0019</p>
+                </div>
+                <button id="btn-close-support" class="btn-primary">Close</button>
+            </div>
+        </div>
+
+        <!-- Global Support Button -->
+        <button id="btn-open-support" class="floating-support-btn">Need support?</button>
+
+        <!-- Screen 8: Closing -->
+        <section id="screen-closing" class="screen hidden">
+            <div class="content closing-message">
+                <h2>Take this calm with you.</h2>
+                <p>You’ve done great today. Remember to be gentle with yourself.</p>
+                <div class="pulsate-orb-small"></div>
+                <p class="final-note">We are always here.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Screen 9: Game (Bubble Pop) -->
+    <section id="screen-game" class="screen hidden">
+        <div class="content full-height"
+            style="padding: 0; border: none; background: transparent; backdrop-filter: none; box-shadow: none; width: 100vw; height: 100vh; max-width: none;">
+            <!-- Canvas for Floating Bubbles -->
+            <canvas id="game-canvas"></canvas>
+
+            <!-- Exit Overlay -->
+            <div id="game-exit-ui" class="fade-in-delayed hidden">
+                <p
+                    style="font-size: 1.2rem; color: #546E7A; margin-bottom: 12px; text-shadow: 0 1px 4px rgba(255,255,255,0.8);">
+                    Ready to return?</p>
+                <button id="btn-end-game" class="btn-primary"
+                    style="background: rgba(255,255,255,0.8); color: #546E7A; padding: 12px 32px;">Continue</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screen 10: Burn It Away Game -->
+    <section id="screen-burn" class="screen hidden">
+        <div id="burn-container" style="position: absolute; top:0; left:0; width:100%; height:100%; overflow:hidden;">
+        </div>
+
+        <!-- Exit Overlay for Burn Game -->
+        <div id="burn-exit-ui" class="fade-in-delayed hidden"
+            style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 20; text-align: center;">
+            <p style="font-size: 1.2rem; color: #aaa; margin-bottom: 12px;">Feeling lighter?</p>
+            <button id="btn-end-burn" class="btn-primary"
+                style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3);">Continue</button>
+        </div>
+    </section>
+    <script src="app.js"></script>
+</body>
+
+</html>
