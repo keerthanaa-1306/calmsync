@@ -20,6 +20,35 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const modalSupport = document.getElementById('modal-support');
+
+    // Update Support Modal Content
+    const supportContent = modalSupport.querySelector('.modal-content p');
+    if (supportContent) {
+        supportContent.innerHTML = `
+            <strong>You are not alone.</strong><br><br>
+            
+            <div style="text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+                <strong>Kerala Government (DISHA):</strong><br>
+                📞 Call: <a href="tel:1056">1056</a> (Toll-Free, 24/7)<br>
+                🌐 <a href="https://dhs.kerala.gov.in/" target="_blank">Kerala Health Services</a>
+            </div>
+
+            <div style="text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+                <strong>India Government (KIRAN):</strong><br>
+                📞 Call: <a href="tel:18005990019">1800-599-0019</a> (Toll-Free, 24/7)<br>
+                🌐 <a href="http://socialjustice.nic.in/" target="_blank">Ministry of Social Justice</a>
+            </div>
+
+            <div style="text-align: left; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 12px;">
+                <strong>Tele-MANAS:</strong><br>
+                📞 Call: <a href="tel:14416">14416</a> (24/7)<br>
+                🌐 <a href="https://telemanas.mohfw.gov.in/" target="_blank">Tele-MANAS Portal</a>
+            </div>
+
+            <br>
+            <small>These services are free, confidential, and available 24/7.</small>
+        `;
+    }
     const visualCircle = document.querySelector('.circle-visual');
     const breathInstruction = document.getElementById('breath-instruction');
     const validationMessage = document.getElementById('validation-message');
@@ -110,12 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function showValidation() {
         const messages = {
             // New moods
-            "Angry": "It’s okay to feel angry. It’s a valid emotion.",
-            "Frustrated": "Frustration is tough. Take a breath.",
-            "Neutral": "Checking in is a great start.",
-            "Sad": "I hear you. be gentle with yourself.",
-            "Anxious": "You are safe right now.",
-            "Stressed": "Let's take this one step at a time.",
+            "Angry": "That sounds intense. Let’s slow this down together.",
+            "Frustrated": "It’s exhausting when things don’t flow. You’re not alone.",
+            "Neutral": "Even checking in is powerful. That matters.",
+            "Sad": "I’m really glad you paused here. Be gentle with yourself.",
+            "Anxious": "You’re safe in this moment. Let’s ground your breath.",
+            "Stressed": "You’ve been carrying a lot. Let’s release some of it.",
             // Legacy mapping fallback
             calm: "It’s wonderful that you’re feeling calm.",
             okay: "It’s okay to just be okay.",
@@ -135,7 +164,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('btn-val-chat').addEventListener('click', () => {
         showScreen('chat');
-        addChatMessage('ai', `I'm here to listen. What's on your mind?`);
+
+        let initialMessage = "I'm here to listen. What's on your mind?";
+
+        // Custom initial message based on mood
+        const moodMessages = {
+            "Angry": "I know things feel intense right now. I'm here to listen without judgment. What's making you feel this way?",
+            "Frustrated": "Frustration can be really draining. Do you want to vent about what's not working?",
+            "Sad": "I'm sorry you're feeling sad. It's okay to let it out here. What's weighing on you?",
+            "Anxious": "I know anxiety can feel overwhelming. You're safe here. heavy. Want to share what's on your mind?",
+            "Stressed": "You've been carrying a lot. Let's set it down for a moment. What's adding the most pressure?",
+            "Neutral": "It's good to just check in. What's on your mind today?"
+        };
+
+        if (state.mood && moodMessages[state.mood]) {
+            initialMessage = moodMessages[state.mood];
+        }
+
+        addChatMessage('ai', initialMessage);
     });
 
     document.getElementById('btn-val-game').addEventListener('click', () => {
@@ -393,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         div.textContent = text;
 
         // Generate a unique ID for typing indicator updates
-        const msgId = 'msg-' + Date.now();
+        const msgId = 'msg-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         div.setAttribute('id', msgId);
 
         chatHistory.appendChild(div);
@@ -416,6 +462,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (crisisWords.some(word => text.includes(word))) {
             openSupportModal();
             return "I'm really glad you told me. You don’t have to go through this alone. Please consider reaching out to support.";
+        }
+
+        // 👋 Greetings
+        const greetingWords = ["hi", "hello", "hey", "greetings", "good morning", "good afternoon", "good evening", "howdy"];
+        if (greetingWords.some(word => text === word || text.startsWith(word + " "))) {
+            return pick([
+                "Hello. I'm here for you.",
+                "Hi there. I'm listening.",
+                "Hey. Take your time, I'm here."
+            ]);
+        }
+
+        // 🙏 Gratitude / Closing
+        const gratitudeWords = ["thank", "thanks", "grateful", "appreciate"];
+        if (gratitudeWords.some(word => text.includes(word))) {
+            return pick([
+                "You are very welcome. It's a privilege to listen.",
+                "I appreciate you trusting me with your thoughts.",
+                "I'm glad I could be here for you.",
+                "Take simple, gentle care of yourself."
+            ]);
+        }
+
+        // 👍 Acknowledgment (Ok / Fine)
+        if (["ok", "okay", "fine", "alright", "good"].includes(text)) {
+            return pick([
+                "I hear you. I'm here if you want to say more.",
+                "Thank you for checking in. I'm listening.",
+                "Take your time."
+            ]);
         }
 
         // 😔 Sad / Low
@@ -465,6 +541,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (chatMemory.lastEmotion === "stressed") {
             return "Do you feel the stress easing a little now?";
+        }
+
+        // 🌈 Mood-Based Default Responses (if no specific keywords found)
+        if (state.mood === "Angry") {
+            return pick([
+                "It's valid to feel this fire. Letting it out can help.",
+                "I hear the frustration in your words. It's safe to express it here.",
+                "Sometimes writing it down helps cool the heat. Keep going."
+            ]);
+        }
+
+        if (state.mood === "Sad") {
+            return pick([
+                "I'm listening. Take as much time as you need.",
+                "It’s okay to not be okay right now. I'm here.",
+                "Your feelings matter. Thank you for sharing them with me."
+            ]);
+        }
+
+        if (state.mood === "Anxious") {
+            return pick([
+                "Take a gentle breath. You are right here, right now.",
+                "I know the thoughts are racing. Let's slow them down one by one.",
+                "You are doing the best you can. That is enough."
+            ]);
+        }
+
+        if (state.mood === "Stressed") {
+            return pick([
+                "One thing at a time. You don't have to solve everything now.",
+                "It sounds like a heavy load. It's okay to rest for a moment.",
+                "Just breathe. You've got this."
+            ]);
         }
 
         // 🌿 Default

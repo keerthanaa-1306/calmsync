@@ -18,14 +18,16 @@
             <div class="content">
                 <div class="glow-orb"></div>
                 <h1>CalmSync</h1>
-                <p class="subtitle pulsate">Pause. Sync. Continue.</p>
+                <p class="subtitle pulsate">A quiet space to reset.</p>
+                <p class="subtitle" style="font-size: 0.9rem; margin-top: 8px; opacity: 0.8;">No pressure. No judgement.
+                    Just breathe.</p>
             </div>
         </section>
 
         <!-- Screen 2: Emotional Check-In -->
         <section id="screen-checkin" class="screen hidden">
             <div class="mood-card">
-                <h2>How are you feeling right now?</h2>
+                <h2>What’s moving through you right now?</h2>
 
                 <div class="mood-options">
                     <div class="mood" data-mood="Angry">
@@ -59,9 +61,9 @@
                     </div>
                 </div>
 
-                <textarea id="checkin-note" placeholder="Write if you want — it’s okay to leave it blank."
+                <textarea id="checkin-note" placeholder="You can share a few words… or just continue."
                     style="margin-bottom: 20px;"></textarea>
-                <button id="continueBtn" disabled>Continue</button>
+                <button id="continueBtn" disabled>Take a moment →</button>
             </div>
         </section>
 
@@ -82,13 +84,13 @@
         <!-- Screen 4: Pause & Breathe -->
         <section id="screen-breathe" class="screen hidden">
             <div class="content">
-                <h2>Let’s slow down for a moment.</h2>
+                <h2>Let your breath guide you.</h2>
                 <div class="breathing-circle">
                     <div class="circle-visual"></div>
                     <span id="breath-instruction">Inhale</span>
                     <span id="breath-countdown">4</span>
                 </div>
-                <button id="btn-finish-pause" class="btn-primary type-secondary">Finish Pause</button>
+                <button id="btn-finish-pause" class="btn-primary type-secondary">I feel calmer →</button>
             </div>
         </section>
 
@@ -107,16 +109,17 @@
         <section id="screen-chat" class="screen hidden">
             <div class="content full-height">
                 <div class="chat-header">
-                    <p class="disclaimer">This is a supportive AI listener, not a replacement for professional help.</p>
+                    <p class="disclaimer">This space listens without judgement.<br>(Not a substitute for professional
+                        help.)</p>
                 </div>
                 <div id="chat-history" class="chat-history">
                     <!-- Messages will appear here -->
                 </div>
                 <div class="chat-input-area">
-                    <input type="text" id="chat-input" placeholder="Type if you want to share…">
+                    <input type="text" id="chat-input" placeholder="What would you like to release?">
                     <button id="btn-chat-send">Send</button>
                 </div>
-                <button id="btn-end-chat" class="btn-text">End Chat</button>
+                <button id="btn-end-chat" class="btn-text">Return to calm →</button>
             </div>
         </section>
 
@@ -152,10 +155,10 @@
         <!-- Screen 8: Closing -->
         <section id="screen-closing" class="screen hidden">
             <div class="content closing-message">
-                <h2>Take this calm with you.</h2>
-                <p>You’ve done great today. Remember to be gentle with yourself.</p>
+                <h2>Carry this stillness forward.</h2>
+                <p>You showed up for yourself. That’s powerful.</p>
                 <div class="pulsate-orb-small"></div>
-                <p class="final-note">We are always here.</p>
+                <p class="final-note">Come back anytime.</p>
             </div>
         </section>
     </div>
@@ -171,9 +174,9 @@
             <div id="game-exit-ui" class="fade-in-delayed hidden">
                 <p
                     style="font-size: 1.2rem; color: #546E7A; margin-bottom: 12px; text-shadow: 0 1px 4px rgba(255,255,255,0.8);">
-                    Ready to return?</p>
+                    Drift for a moment…<br>When you’re ready, continue.</p>
                 <button id="btn-end-game" class="btn-primary"
-                    style="background: rgba(255,255,255,0.8); color: #546E7A; padding: 12px 32px;">Continue</button>
+                    style="background: rgba(255,255,255,0.8); color: #546E7A; padding: 12px 32px;">I’m ready →</button>
             </div>
         </div>
     </section>
@@ -186,9 +189,11 @@
         <!-- Exit Overlay for Burn Game -->
         <div id="burn-exit-ui" class="fade-in-delayed hidden"
             style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 20; text-align: center;">
-            <p style="font-size: 1.2rem; color: #aaa; margin-bottom: 12px;">Feeling lighter?</p>
+            <p style="font-size: 1.2rem; color: #aaa; margin-bottom: 12px;">Let it burn. Let it go.<br>Stay as long as
+                you need.</p>
             <button id="btn-end-burn" class="btn-primary"
-                style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3);">Continue</button>
+                style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3);">Release
+                complete →</button>
         </div>
     </section>
     <script src="app.js"></script>
